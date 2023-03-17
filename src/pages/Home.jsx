@@ -1,28 +1,34 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import CategoriesResults from '../components/CategoriesResults';
 
 export default class Home extends Component {
   render() {
     return (
-      <div>
-        <p
-          data-testid="home-initial-message"
-        >
-          Digite algum termo de pesquisa ou escolha uma categoria.
-        </p>
-        <input
-          type="text"
-          placeholder="Digite algum termo de pesquisa ou esolha uma categoria"
-        />
-        <Link to="/cart" data-testid="shopping-cart-button">
-          <button
-            type="button"
+      <>
+        <div>
+          <p
+            data-testid="home-initial-message"
           >
-            carrinho
-          </button>
-        </Link>
+            Digite algum termo de pesquisa ou escolha uma categoria.
+          </p>
+          <input
+            type="text"
+            placeholder="Digite algum termo de pesquisa ou esolha uma categoria"
+          />
+          <Link to="/cart" data-testid="shopping-cart-button">
+            <button
+              type="button"
+            >
+              carrinho
+            </button>
+          </Link>
+        </div>
 
-      </div>
+        <div>
+          <CategoriesResults />
+        </div>
+      </>
     );
   }
 }
