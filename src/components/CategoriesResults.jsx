@@ -11,7 +11,7 @@ export default class CategoriesResults extends Component {
     this.setState({
       categories,
     });
-    console.log(categories);
+    // console.log(categories);
   }
 
   render() {

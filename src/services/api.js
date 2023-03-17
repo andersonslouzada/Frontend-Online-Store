@@ -18,3 +18,10 @@ export async function getProductById() {
   const data = await response.json();
   return data;
 }
+
+export async function getProductsByQuery(QUERY) {
+  const apiMLB = `https://api.mercadolibre.com/sites/MLB/search?q=${QUERY}`;
+  const response = await fetch(apiMLB);
+  const data = await response.json();
+  return data;
+}
