@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 export default class Home extends Component {
   render() {
@@ -13,6 +14,14 @@ export default class Home extends Component {
           type="text"
           placeholder="Digite algum termo de pesquisa ou esolha uma categoria"
         />
+        <Link to="/cart" data-testid="shopping-cart-button">
+          <button
+            type="button"
+          >
+            carrinho
+          </button>
+        </Link>
+
       </div>
     );
   }
