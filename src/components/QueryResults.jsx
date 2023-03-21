@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import Card from './Card';
 
 export default class QueryResults extends Component {
   render() {
@@ -7,16 +8,18 @@ export default class QueryResults extends Component {
     return (
       <>
         <h1>pesquisa</h1>
-        { queryResult.length === 0 && <p>Nenhum produto foi encontrado</p>}
         <ul>
           { queryResult.map((item) => (
-            <li data-testid="product" key={ item.id }>
-              <img src={ item.thumbnail } alt={ item.title } />
-              <p>{ item.title }</p>
-              <p>{`R$ ${item.price} `}</p>
-            </li>
+            <Card
+              data-testid="product"
+              key={ item.id }
+              price={ item.price }
+              title={ item.title }
+              thumbnail={ item.thumbnail }
+            />
           ))}
         </ul>
+        { queryResult.length === 0 && <p>Nenhum produto foi encontrado</p>}
       </>
     );
   }
@@ -25,8 +28,5 @@ export default class QueryResults extends Component {
 QueryResults.propTypes = {
   queryResult: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.string,
-    title: PropTypes.string,
-    price: PropTypes.number,
-    thumbnail: PropTypes.string,
   }).isRequired).isRequired,
 };

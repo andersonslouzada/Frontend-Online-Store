@@ -19,7 +19,6 @@ export default class Home extends Component {
     const { query } = this.state;
     const queryResult = await getProductsByQuery(query);
     this.setState({ queryResult: queryResult.results });
-    // console.log(queryResult.results);
   };
 
   render() {
@@ -41,7 +40,6 @@ export default class Home extends Component {
           />
           <button
             data-testid="query-button"
-            // name="query"
             onClick={ this.onClick }
             type="button"
 
