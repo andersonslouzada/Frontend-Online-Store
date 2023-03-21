@@ -12,7 +12,7 @@ export async function getProductsFromCategoryAndQuery(idCategoria, variavel) {
   return data;
 }
 
-export async function getProductById() {
+export async function getProductById(PRODUCT_ID) {
   const apiMLB = `https://api.mercadolibre.com/items/${PRODUCT_ID}`;
   const response = await fetch(apiMLB);
   const data = await response.json();

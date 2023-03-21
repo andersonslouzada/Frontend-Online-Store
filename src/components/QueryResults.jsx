@@ -13,6 +13,7 @@ export default class QueryResults extends Component {
             <Card
               data-testid="product"
               key={ item.id }
+              id={ item.id }
               price={ item.price }
               title={ item.title }
               thumbnail={ item.thumbnail }
