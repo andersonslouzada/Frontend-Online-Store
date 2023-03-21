@@ -55,11 +55,11 @@ export default class Home extends Component {
           </Link>
         </div>
         <div>
-          <QueryResults queryResult={ queryResult } />
+          <Categories />
         </div>
 
         <div>
-          <Categories />
+          <QueryResults queryResult={ queryResult } />
         </div>
       </>
     );
