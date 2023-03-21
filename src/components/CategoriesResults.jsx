@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import { getCategories } from '../services/api';
+import { getCategories, getProductsFromCategoryAndQuery } from '../services/api';
 
-export default class CategoriesResults extends Component {
+export default class Categories extends Component {
   state = {
     categories: [],
+    categoryItens: [],
   };
 
   async componentDidMount() {
@@ -13,8 +14,18 @@ export default class CategoriesResults extends Component {
     });
   }
 
+  productsCategory = async (categoryId) => {
+    const response = await getProductsFromCategoryAndQuery(categoryId, null);
+    this.setState({ categoryItens: [...response.results] });
+  };
+
+  onClick = async ({ target }) => {
+    this.productsCategory(target.id);
+    console.log(target.id);
+  };
+
   render() {
-    const { categories } = this.state;
+    const { categories, categoryItens } = this.state;
     return (
       <>
         <h1>Categorias</h1>
@@ -23,6 +34,8 @@ export default class CategoriesResults extends Component {
             <button
               key={ cat.id }
               data-testid="category"
+              id={ cat.id }
+              onClick={ this.onClick }
             >
               { cat.name }
             </button>)) }
