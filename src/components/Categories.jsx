@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { getCategories, getProductsFromCategoryAndQuery } from '../services/api';
+import Card from './Card';
 
 export default class Categories extends Component {
   state = {
@@ -14,14 +15,21 @@ export default class Categories extends Component {
     });
   }
 
-  productsCategory = async (categoryId) => {
-    const response = await getProductsFromCategoryAndQuery(categoryId, null);
-    this.setState({ categoryItens: [...response.results] });
-  };
+  // componentDidUpdate() {
+  //   const { categoryItens } = this.state;
+
+  //   return categoryItens.map((item) => (
+  //     <Card
+  //       key={ item.id }
+  //       title={ item.title }
+  //       thumbnail={ item.thumbnail }
+  //       price={ item.price }
+  //     />));
+  // }
 
   onClick = async ({ target }) => {
-    this.productsCategory(target.id);
-    console.log(target.id);
+    const response = await getProductsFromCategoryAndQuery(target.id, null);
+    this.setState({ categoryItens: response.results });
   };
 
   render() {
@@ -39,6 +47,15 @@ export default class Categories extends Component {
             >
               { cat.name }
             </button>)) }
+        </ul>
+        <ul>
+          { categoryItens.length !== 0 && categoryItens.map((item) => (
+            <Card
+              key={ item.id }
+              title={ item.title }
+              thumbnail={ item.thumbnail }
+              price={ item.price }
+            />))}
         </ul>
       </>
     );

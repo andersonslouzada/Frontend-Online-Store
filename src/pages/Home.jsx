@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import Categories from '../components/CategoriesResults';
+import Categories from '../components/Categories';
 import QueryResults from '../components/QueryResults';
 import { getProductsByQuery } from '../services/api';
 
